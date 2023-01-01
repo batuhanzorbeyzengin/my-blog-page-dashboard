@@ -5,7 +5,6 @@ const secret = process.env.SECRET || "secret";
 
 export default async function middleware(req) {
   const jwt = req.cookies.get("OursiteJWT");
-  // const url = req.url;
   const { pathname } = req.nextUrl;
 
   if (pathname.startsWith("/dashboard")) {
