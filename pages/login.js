@@ -18,17 +18,15 @@ export default function Login() {
         if (user.status === 200) {
             router.push("/dashboard/profile");
         }
-
-        console.log(user);
     };
 
     return (
         <>
             <div className="container">
                 <div className="row">
-                    <div className="col-12 d-flex justify-content-center">
+                    <div className="col-12 d-flex justify-content-center" style={{ height: "100vh", alignItems: "center" }}>
                         <form onSubmit={(e) => handleSubmit(e)}>
-                            <div className="">
+                            <div>
                                 <label htmlFor="username"> Username </label>
                                 <input
                                     type="text"
@@ -38,7 +36,7 @@ export default function Login() {
                                 />
                             </div>
 
-                            <div className="">
+                            <div>
                                 <label htmlFor="password"> Password </label>
                                 <input
                                     type="password"

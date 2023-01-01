@@ -7,8 +7,6 @@ export default function Home() {
 
   const handleGetUser = async () => {
     const user = await axios.get("/api/user");
-
-    console.log(user);
   };
 
   const handleLogOut = async () => {
@@ -17,8 +15,6 @@ export default function Home() {
     if (user.status === 200) {
       router.push("/login");
     }
-
-    console.log(user);
   };
   return (
     <>
