@@ -24,26 +24,34 @@ export default function Login() {
 
     return (
         <>
-            <div>
-                <form onSubmit={(e) => handleSubmit(e)}>
-                    <label htmlFor="username"> Username </label>
-                    <input
-                        type="text"
-                        name="username"
-                        id="username"
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
+            <div className="container">
+                <div className="row">
+                    <div className="col-12 d-flex justify-content-center">
+                        <form onSubmit={(e) => handleSubmit(e)}>
+                            <div className="">
+                                <label htmlFor="username"> Username </label>
+                                <input
+                                    type="text"
+                                    name="username"
+                                    id="username"
+                                    onChange={(e) => setUsername(e.target.value)}
+                                />
+                            </div>
 
-                    <label htmlFor="password"> Password </label>
-                    <input
-                        type="password"
-                        name="password"
-                        id="password"
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
+                            <div className="">
+                                <label htmlFor="password"> Password </label>
+                                <input
+                                    type="password"
+                                    name="password"
+                                    id="password"
+                                    onChange={(e) => setPassword(e.target.value)}
+                                />
+                            </div>
 
-                    <button> Log in </button>
-                </form>
+                            <button> Log in </button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </>
     )
