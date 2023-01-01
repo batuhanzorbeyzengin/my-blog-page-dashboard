@@ -1,7 +1,9 @@
+import Head from "next/head";
+import Link from "next/link";
 import axios from "axios"
 import { useState } from "react"
 import { useRouter } from "next/router";
-import Head from "next/head";
+
 
 export default function Login() {
     const [username, setUsername] = useState("");
@@ -70,7 +72,11 @@ export default function Login() {
                                                 <a className="small" href="forgot-password.html">Forgot Password?</a>
                                             </div>
                                             <div className="text-center">
-                                                <a className="small" href="register.html">Create an Account!</a>
+                                                <Link href={"/register"} legacyBehavior>
+                                                    <a className="small">
+                                                        Create an Account!
+                                                    </a>
+                                                </Link>
                                             </div>
                                         </div>
                                     </div>
