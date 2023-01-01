@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 export default function Register() {
     return (
         <div className="container">
@@ -45,10 +47,18 @@ export default function Register() {
                                 </form>
                                 <hr />
                                 <div className="text-center">
-                                    <a className="small" href="forgot-password.html">Forgot Password?</a>
+                                    <Link href={"/forgot-password"} legacyBehavior>
+                                        <a className="small">
+                                            Forgot Password?
+                                        </a>
+                                    </Link>
                                 </div>
                                 <div className="text-center">
-                                    <a className="small" href="login.html">Already have an account? Login!</a>
+                                    <Link href={"/login"} legacyBehavior>
+                                        <a className="small">
+                                            Already have an account? Login!
+                                        </a>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

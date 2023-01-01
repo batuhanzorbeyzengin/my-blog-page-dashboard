@@ -69,7 +69,11 @@ export default function Login() {
                                             </form>
                                             <hr />
                                             <div className="text-center">
-                                                <a className="small" href="forgot-password.html">Forgot Password?</a>
+                                                <Link href={"/forgot-password"} legacyBehavior>
+                                                    <a className="small">
+                                                        Forgot Password?
+                                                    </a>
+                                                </Link>
                                             </div>
                                             <div className="text-center">
                                                 <Link href={"/register"} legacyBehavior>
