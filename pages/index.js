@@ -19,7 +19,6 @@ export default function Home() {
   return (
     <>
       <button onClick={() => handleGetUser()}> User </button>
-
       <button onClick={() => handleLogOut()}> Logout </button>
     </>
   )

@@ -1,12 +1,13 @@
+import Layout from "../../components/Layout";
 
 export default function Home() {
     return(
-        <>
-            <div className="container">
-                <div className="">
-
+        <Layout title={"Home Page"} description={"Admin panel home page"}>
+            <div className="row">
+                <div className="col-12">
+                    Home
                 </div>
             </div>
-        </>
+        </Layout>
     )
 }

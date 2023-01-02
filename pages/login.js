@@ -19,7 +19,7 @@ export default function Login() {
         const user = await axios.post("/api/auth/login", credentials);
 
         if (user.status === 200) {
-            router.push("/dashboard/profile");
+            router.push("/dashboard/home");
         }
     };
 
