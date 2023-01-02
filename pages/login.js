@@ -8,24 +8,34 @@ import { useRouter } from "next/router";
 export default function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState();
 
     const router = useRouter();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        setLoading(true);
         const credentials = { username, password };
 
-        const user = await axios.post("/api/auth/login", credentials);
-
-        if (user.status === 200) {
-            router.push("/dashboard/home");
-        }
+        await axios.post("/api/auth/login", credentials)
+            .then((response) => {
+                if (response.status === 200) {
+                    setLoading(false);
+                    router.push("/dashboard/home");
+                }
+            })
+            .catch((error) => {
+                setLoading(false);
+                setError(error.response.data.message);
+            })
     };
 
     return (
         <>
             <Head>
+                <title>Login Page</title>
                 <link
                     href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
                     rel="stylesheet" />
@@ -59,9 +69,14 @@ export default function Login() {
                                                             Me</label>
                                                     </div>
                                                 </div> */}
-                                                <button className="btn btn-primary btn-user btn-block">
-                                                    Login
+                                                <button className="btn btn-primary btn-user btn-block" disabled={loading}>
+                                                    {loading === true ? "Loading..." : "Login"}
                                                 </button>
+                                                {error &&
+                                                    <div className="alert alert-danger mt-3" role="alert">
+                                                        {error}
+                                                    </div>
+                                                }
                                                 <hr />
                                                 <button className="btn btn-google btn-user btn-block">
                                                     <i className="fab fa-google fa-fw"></i> Login with Google
