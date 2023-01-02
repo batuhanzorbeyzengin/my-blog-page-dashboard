@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "title": "blog 1",
+        "category": "blog",
+        "postOwner": "Batuhan",
+        "releaseDate": "08.01.2023",
+        "dateOfArrangement": ""
+    },
+    {
+        "id": 2,
+        "title": "blog 2",
+        "category": "blog",
+        "postOwner": "Batuhan",
+        "releaseDate": "08.01.2023",
+        "dateOfArrangement": ""
+    },
+    {
+        "id": 3,
+        "title": "blog 3",
+        "category": "blog",
+        "postOwner": "Batuhan",
+        "releaseDate": "08.01.2023",
+        "dateOfArrangement": ""
+    }
+]
