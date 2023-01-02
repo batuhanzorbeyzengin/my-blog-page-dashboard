@@ -1,9 +1,18 @@
 import Link from "next/link"
 import { useRouter } from "next/router"
+import axios from "axios"
 
 export default function Header() {
 
     const router = useRouter();
+
+    const handleLogOut = async () => {
+        const user = await axios.get("/api/auth/logout");
+
+        if (user.status === 200) {
+            router.push("/login");
+        }
+    };
 
     return (
         <nav className="navbar navbar-expand-lg">
@@ -39,6 +48,7 @@ export default function Header() {
                         <input className="form-control me-2" type="search" placeholder="Search for articles" aria-label="Search" />
                         <button className="btn btn-outline-success" type="submit">Search</button>
                     </form>
+                    <button type="button" className="btn btn-secondary ml-2" onClick={() => handleLogOut()}> Logout </button>
                 </div>
             </div>
         </nav>
