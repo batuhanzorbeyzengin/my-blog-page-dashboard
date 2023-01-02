@@ -56,7 +56,7 @@ export default function Login() {
                                                 <div className="form-group">
                                                     <input type="text" className="form-control form-control-user"
                                                         id="exampleInputEmail" aria-describedby="emailHelp"
-                                                        placeholder="Enter User Name..." onChange={(e) => setUsername(e.target.value)} />
+                                                        placeholder="User Name" onChange={(e) => setUsername(e.target.value)} />
                                                 </div>
                                                 <div className="form-group">
                                                     <input type="password" className="form-control form-control-user"
