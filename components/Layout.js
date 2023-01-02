@@ -1,5 +1,6 @@
 import Head from "next/head";
 import axios from "axios";
+import Link from "next/link";
 import { useRouter } from "next/router";
 
 export default function Layout({children, title, description}) {
@@ -65,9 +66,12 @@ export default function Layout({children, title, description}) {
 
                     {/* <!-- Nav Item - Charts --> */}
                     <li className="nav-item">
-                        <a className="nav-link" href="charts.html">
-                            <i className="fas fa-fw fa-chart-area"></i>
-                            <span>All Posts</span></a>
+                        <Link href={"/dashboard/all-post"} legacyBehavior>
+                            <a className="nav-link">
+                                <i className="fas fa-fw fa-chart-area"></i>
+                                <span>All Posts</span>
+                            </a>
+                        </Link>
                     </li>
 
                     {/* <!-- Nav Item - Tables --> */}
@@ -145,7 +149,7 @@ export default function Layout({children, title, description}) {
                                         </form>
                                     </div>
                                 </li>
-                                <li class="nav-item dropdown no-arrow mx-1 d-flex align-items-center">
+                                <li className="nav-item dropdown no-arrow mx-1 d-flex align-items-center">
                                     <button type="button" className="btn btn-secondary ml-2" onClick={() => handleLogOut()}> Logout </button>
                                 </li>
 
