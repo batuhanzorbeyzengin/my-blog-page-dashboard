@@ -1,7 +1,18 @@
 import Head from "next/head";
-import Header from "./Header";
+import axios from "axios";
+import { useRouter } from "next/router";
 
 export default function Layout({children, title, description}) {
+
+    const router = useRouter();
+
+    const handleLogOut = async () => {
+        const user = await axios.get("/api/auth/logout");
+
+        if (user.status === 200) {
+            router.push("/login");
+        }
+    };
     return(
         <>
             <Head>
@@ -134,6 +145,9 @@ export default function Layout({children, title, description}) {
                                         </form>
                                     </div>
                                 </li>
+                                <li class="nav-item dropdown no-arrow mx-1 d-flex align-items-center">
+                                    <button type="button" className="btn btn-secondary ml-2" onClick={() => handleLogOut()}> Logout </button>
+                                </li>
 
                                 <div className="topbar-divider d-none d-sm-block"></div>
 
@@ -193,7 +207,7 @@ export default function Layout({children, title, description}) {
             </a>
 
             {/* Logout Modal */}
-            <div className="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            <div className="modal fade" id="logoutModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
