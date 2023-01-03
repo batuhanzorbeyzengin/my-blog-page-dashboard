@@ -30,9 +30,12 @@ export default function Layout({children, title, description}) {
 
                     {/* <!-- Nav Item - Dashboard --> */}
                     <li className="nav-item active">
-                        <a className="nav-link" href="index.html">
-                            <i className="fas fa-fw fa-tachometer-alt"></i>
-                            <span>Dashboard</span></a>
+                        <Link href={"/dashboard/home"} legacyBehavior>
+                            <a className="nav-link">
+                                <i className="fas fa-fw fa-tachometer-alt"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </Link>
                     </li>
 
                     {/* <!-- Divider --> */}
