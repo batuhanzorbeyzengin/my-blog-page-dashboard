@@ -15,10 +15,10 @@ export default function PostCategories() {
     }
 
     return (
-        <Layout title={"All Post Categories"} description={"All post categories page"}>
+        <Layout title={"All Post Category"} description={"All post categories page"}>
             <div className="row">
                 <div className="col-sm-12">
-                    <Tables headContent={headContent}>
+                    <Tables headContent={headContent} tableTitle={"All Post Category"}>
                         {CategoryData.map((x) => (
                             <tr key={x.title}>
                                 <td>{x.title}</td>

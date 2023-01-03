@@ -1,8 +1,8 @@
-export default function Tables({children, headContent}) {
+export default function Tables({children, headContent, tableTitle}) {
     return (
         <div className="card shadow mb-4">
             <div className="card-header py-3">
-                <h6 className="m-0 font-weight-bold text-primary">All Posts</h6>
+                <h6 className="m-0 font-weight-bold text-primary">{tableTitle}</h6>
             </div>
             <div className="card-body">
                 <div className="table-responsive">

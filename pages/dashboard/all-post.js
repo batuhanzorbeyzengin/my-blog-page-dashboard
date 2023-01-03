@@ -19,7 +19,7 @@ export default function AllPost() {
             <div className="row">
                 <div className="col-sm-12">
                     {/* TODO: The id of the content will be sent */}
-                    <Tables headContent={headContent}>
+                    <Tables headContent={headContent} tableTitle={"All Post Table"}>
                         {BlogData.map((x) => (
                             <tr key={x.title}>
                                 <td>{x.title}</td>
