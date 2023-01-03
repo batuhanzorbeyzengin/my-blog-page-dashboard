@@ -2,10 +2,18 @@ import Layout from "../../components/Layout";
 import Tables from "../../components/Tables";
 import BlogData from "../../styles/posts.json";
 import Link from "next/link";
+import { useState } from "react";
 
 const headContent = ["Post Name", "Category", "Post owner", "Release date", "Date of arrangement", ""]
 
 export default function AllPost() {
+
+    const [productId, setProductId] = useState();
+
+    const productDelete = (e) => {
+        setProductId(e);
+    }
+
     return (
         <Layout title={"All Post Page"} description={"All post page meta data"}>
             <div className="row">
@@ -26,11 +34,7 @@ export default function AllPost() {
                                         </a>
                                     </Link>
                                     {/* TODO: Delete service will be written and connected */}
-                                    <Link href={`/dashboard/blog-detail/${x.id}`} legacyBehavior>
-                                        <a>
-                                            <button type="button" className="btn btn-danger ml-2">delete</button>
-                                        </a>
-                                    </Link>
+                                    <button type="button" className="btn btn-danger ml-2" onClick={() => productDelete(x.id)}>delete</button>
                                 </td>
                             </tr>
                         ))}
