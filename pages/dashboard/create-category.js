@@ -3,9 +3,9 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 const validationSchema = Yup.object({
-	categoryTitle: Yup.string().required("Zorunlu alan"),
-	categoryUrl: Yup.string().required("Zorunlu alan").test('contains-turkish-chars','The text cannot contain Turkish characters',(value) => !/[^A-Za-z0-9\s]/g.test(value)),
-	categoryDescription: Yup.string().required('Zorunlu alan'),
+	categoryTitle: Yup.string().required("Required field"),
+	categoryUrl: Yup.string().required("Required field").test('contains-turkish-chars','The text cannot contain Turkish characters',(value) => !/[^A-Za-z0-9\s]/g.test(value)),
+	categoryDescription: Yup.string().required('Required field'),
 });
 
 export default function CreateCategory() {
