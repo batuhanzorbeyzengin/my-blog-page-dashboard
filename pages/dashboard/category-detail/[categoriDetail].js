@@ -4,9 +4,7 @@ import { useRouter } from "next/router";
 export default function CategoriDetail() {
     const router = useRouter();
 
-    const categoryId = router.query.categoriDetail
-
-    console.log(categoryId);
+    const categoryId = router.query.categoriDetail;
 
     return(
         <Layout title={"Categori Detail"} description={"Categori detail page"}>
