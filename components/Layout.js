@@ -94,9 +94,12 @@ export default function Layout({children, title, description}) {
                     </li>
 
                     <li className="nav-item">
-                        <a className="nav-link" href="tables.html">
-                            <i className="fas fa-fw fa-table"></i>
-                            <span>Add category</span></a>
+                        <Link href={"/dashboard/create-category"} legacyBehavior>
+                            <a className="nav-link">
+                                <i className="fas fa-fw fa-table"></i>
+                                <span>Add category</span>
+                            </a>
+                        </Link>
                     </li>
                 </ul>
                 {/* <!-- End of Sidebar --> */}
