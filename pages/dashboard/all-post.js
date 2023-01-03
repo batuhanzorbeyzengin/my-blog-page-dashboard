@@ -38,7 +38,6 @@ export default function AllPost() {
                                 </td>
                             </tr>
                         ))}
-
                     </Tables>
                 </div>
             </div>

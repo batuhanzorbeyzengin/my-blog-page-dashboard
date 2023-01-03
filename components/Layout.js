@@ -85,9 +85,12 @@ export default function Layout({children, title, description}) {
                     </li>
 
                     <li className="nav-item">
-                        <a className="nav-link" href="tables.html">
-                            <i className="fas fa-fw fa-table"></i>
-                            <span>Post categories</span></a>
+                        <Link href={"/dashboard/post-categories"} legacyBehavior>
+                            <a className="nav-link">
+                                <i className="fas fa-fw fa-table"></i>
+                                <span>Post categories</span>
+                            </a>
+                        </Link>
                     </li>
 
                     <li className="nav-item">

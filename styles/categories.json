@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "title": "categori 1",
+        "affiliatedArticles": 10,
+        "releaseDate": "08.01.2023",
+        "dateOfArrangement": ""
+    },
+    {
+        "id": 2,
+        "title": "categori 2",
+        "affiliatedArticles": 10,
+        "releaseDate": "08.01.2023",
+        "dateOfArrangement": ""
+    },
+    {
+        "id": 3,
+        "title": "categori 3",
+        "affiliatedArticles": 10,
+        "releaseDate": "08.01.2023",
+        "dateOfArrangement": ""
+    }
+]

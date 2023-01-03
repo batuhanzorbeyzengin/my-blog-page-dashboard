@@ -1,4 +1,4 @@
-export default function Tables({children, headContent, contentId}) {
+export default function Tables({children, headContent}) {
     return (
         <div className="card shadow mb-4">
             <div className="card-header py-3">
