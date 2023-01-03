@@ -1,15 +1,14 @@
-// import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import Layout from "../../components/Layout";
 // import { useState } from 'react';
 // import { EditorState, convertToRaw } from 'draft-js';
 // import dynamic from 'next/dynamic';
-// import draftToHtml from 'draftjs-to-html';
-// import htmlToDraft from 'html-to-draftjs';
-
 // const Editor = dynamic(
 //     () => import('react-draft-wysiwyg').then(mod => mod.Editor),
 //     { ssr: false }
-// )
+//   )
+// import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+// import draftToHtml from 'draftjs-to-html';
+// import htmlToDraft from 'html-to-draftjs';
 
 export default function CreatePost() {
 
