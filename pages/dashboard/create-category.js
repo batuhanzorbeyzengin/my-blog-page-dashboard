@@ -4,12 +4,11 @@ import * as Yup from 'yup';
 
 const validationSchema = Yup.object({
 	categoryTitle: Yup.string().required("Zorunlu alan"),
-	categoryUrl: Yup.string().required("Zorunlu alan"),
+	categoryUrl: Yup.string().required("Zorunlu alan").test('contains-turkish-chars','The text cannot contain Turkish characters',(value) => !/[^A-Za-z0-9\s]/g.test(value)),
 	categoryDescription: Yup.string().required('Zorunlu alan'),
 });
 
 export default function CreateCategory() {
-
 
     const { handleSubmit, handleChange, values, errors } = useFormik({
 		initialValues: {
@@ -18,8 +17,12 @@ export default function CreateCategory() {
 			categoryDescription: '',
 		},
 		validationSchema,
-		onSubmit: values => {
-			console.log(values);
+		onSubmit: (values, actions) => {
+            const newValues = {
+          ...values,
+          categoryUrl: values.categoryUrl.replace(/\s/g, '-'),
+        };
+			console.log(newValues);
 		},
 	});
 
