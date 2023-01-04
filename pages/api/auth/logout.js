@@ -7,7 +7,7 @@ export default async function (req, res) {
   const jwt = cookies.OursiteJWT;
 
   if (!jwt) {
-    return res.json({ message: "Bro you are already not logged in..." });
+    return res.json({ message: "Not logged in..." });
   } else {
     const serialised = serialize("OursiteJWT", null, {
       httpOnly: true,
