@@ -10,25 +10,21 @@
   },
   "dependencies": {
     "@next/font": "13.1.1",
+    "@prisma/client": "^4.8.0",
     "axios": "^1.2.2",
     "bootstrap": "^5.2.3",
     "cookie": "^0.5.0",
-    "draft-js": "^0.11.7",
-    "draftjs-to-html": "^0.9.1",
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.1",
     "formik": "^2.2.9",
     "jose": "^4.11.1",
     "jquery": "^3.6.3",
-    "jsonwebtoken": "^9.0.0",
     "next": "13.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-draft-wysiwyg": "^1.15.0",
     "yup": "^0.32.11"
   },
   "devDependencies": {
-    "@types/draft-js": "^0.11.10",
-    "@types/react-draft-wysiwyg": "^1.13.4"
+    "prisma": "^4.8.0"
   }
 }

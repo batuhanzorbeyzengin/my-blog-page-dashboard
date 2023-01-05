@@ -1,17 +1,17 @@
 import Layout from "../../components/Layout"
 import Tables from "../../components/Tables"
 import CategoryData from "../../styles/categories.json"
-import Link from "next/link"
 import { useState } from "react"
+import { useRouter } from "next/router"
 
 const headContent = ["Categori Name", "Affiliated articles", "Release date", "Date of arrangement", ""]
 
 export default function PostCategories() {
 
-    const [categoryId, setCategoryId] = useState();
+    const router = useRouter();
 
     const categoryDelete = (e) => {
-        setCategoryId(e);
+        // TODO: category deletion service will be prepared
     }
 
     return (
@@ -26,11 +26,7 @@ export default function PostCategories() {
                                 <td>{x.releaseDate}</td>
                                 <td>{x.dateOfArrangement}</td>
                                 <td>
-                                    <Link href={`/dashboard/category-detail/${x.id}`} legacyBehavior>
-                                        <a>
-                                            <button type="button" className="btn btn-primary">edit</button>
-                                        </a>
-                                    </Link>
+                                    <a href={`/dashboard/category-detail/${x.id}`}><button type="button" className="btn btn-primary">edit</button></a>
                                     {/* TODO: Delete service will be written and connected */}
                                     <button type="button" className="btn btn-danger ml-2" onClick={() => categoryDelete(x.id)}>delete</button>
                                 </td>
