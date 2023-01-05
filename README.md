@@ -30,6 +30,7 @@ DATABASE_URL="mysql://root:root@localhost:8889/batuhan_dashboard"
 NODE_ENV=development
 SECRET=
 ```
+After setting the config in the .env file, you have finished setting up the database connection. All that remains is to deploy the model file located at /prisma/schema.prisma to the database on the Prisma side. You can do this by running the 'npx prisma db push' command in your developer console.
 
 After completing these steps, you can start the project with:
 
