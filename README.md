@@ -7,6 +7,8 @@ Technologies used in the project:
 
 While creating the frontend with Nextjs, I was able to handle the backend processes with Prisma without writing a separate backend.
 
+In this project, I used the MySQL side of Prisma. The config settings are set accordingly. But if you want, it supports databases such as SQLite, MSSQL, MongoDB, and PostgreSQL. You can run it after making the necessary config settings by looking at the website.
+
 ## Getting Started
 
 First, you need to install all packages:
