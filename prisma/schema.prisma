@@ -18,6 +18,7 @@ model User {
   lastName    String?
   password String?
   role    Role     @default(USER)
+  emailVerification Boolean @default(false)
   posts   Post[]
   categorys Category[]
   profile Profile?
