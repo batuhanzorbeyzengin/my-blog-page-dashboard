@@ -1,16 +1,26 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { sign } from "../../../services/jwt_sign_verify";
 import { serialize } from "cookie";
+import { PrismaClient } from '@prisma/client'
+
+const prisma = new PrismaClient()
 
 const secret = process.env.SECRET;
 
 export default async function (req, res) {
   const { username, password } = req.body;
 
+  const userData  = await prisma.user.findMany({
+    where: {
+      email: username,
+      password: password
+    },
+  });
+
   // Check in the database
   // if a user with this username
   // and password exists
-  if (username === "admin" && password === "admin") {
+  if (userData[0].email === username && userData[0].password === password) {
     const token = await sign(
       "testing",
       secret
