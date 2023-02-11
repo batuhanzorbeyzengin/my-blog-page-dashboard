@@ -23,6 +23,7 @@ export default function Login() {
             .then((response) => {
                 if (response.status === 200) {
                     setLoading(false);
+                    document.cookie = `user=${JSON.stringify(response.data[0])}`;
                     router.push("/dashboard/home");
                 }
             })

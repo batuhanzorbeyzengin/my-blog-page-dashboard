@@ -17,6 +17,7 @@ export default async function (req, res) {
     },
   });
 
+  console.log(userData);
 
   const passwordMatch = await bcrypt.compare(password, userData[0].password);
   if (!passwordMatch) {
@@ -38,5 +39,5 @@ export default async function (req, res) {
 
   res.setHeader("Set-Cookie", serialised);
 
-  res.status(200).json({ message: "Success!" });
+  res.status(200).json(userData);
 }

@@ -1,13 +1,14 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import axios from "axios"
 
 const validationSchema = Yup.object({
     categoryTitle: Yup.string().required("Required field"),
-    categoryUrl: Yup.string().required("Required field").test('contains-turkish-chars', 'The text cannot contain Turkish characters', (value) => !/[^A-Za-z0-9\s]/g.test(value)),
+    categoryUrl: Yup.string().required("Required field").test('contains-turkish-chars', 'The text cannot contain Turkish characters', (value) => /^[A-Za-z0-9-]+$/g.test(value)),
     categoryDescription: Yup.string().required('Required field'),
 });
 
-export default function CategoryForm({formType}) {
+export default function CategoryForm({ formType }) {
 
     const { handleSubmit, handleChange, values, errors } = useFormik({
         initialValues: {
@@ -16,15 +17,24 @@ export default function CategoryForm({formType}) {
             categoryDescription: '',
         },
         validationSchema,
-        onSubmit: (values, actions) => {
+        onSubmit: async (values, actions) => {
             const newValues = {
                 ...values,
-                categoryUrl: values.categoryUrl.replace(/\s/g, '-'),
+                categoryUrl: '/' + values.categoryUrl.toLowerCase().replace(/\s+/g, ' ').replace(/[\s-]+/g, '-').replace(/\b[A-Z]+\b/g, (word) => word.toLowerCase()),
             };
             // Form type control
-            if(formType === "CreateCategory"){
+            if (formType === "CreateCategory") {
+                await axios.post("/api/panel/create-category", newValues)
+                    .then((response) => {
+                        if (response.status === 200) {
+                            router.push("/dashboard/post-categories");
+                        }
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    })
                 console.log(newValues);
-            } if(formType === "CategoryUpdate"){
+            } if (formType === "CategoryUpdate") {
                 console.log("Category Update");
             }
         },
