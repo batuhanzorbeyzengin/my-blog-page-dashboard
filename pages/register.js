@@ -4,6 +4,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useQuery } from "react-query";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 const validationSchema = Yup.object({
     firstName: Yup.string().required("Required field"),
@@ -15,6 +16,8 @@ const validationSchema = Yup.object({
 
 export default function Register() {
 
+    const router = useRouter();
+
     const { handleSubmit, handleChange, values, errors } = useFormik({
         initialValues: {
             firstName: '',
@@ -24,11 +27,14 @@ export default function Register() {
         },
         validationSchema,
         onSubmit: async values => {
-            useQuery(
-                ["createUser"],
-                await axios.post("/api/auth/register", values),
-                { staleTime: 60000 }
-            );
+            await axios.post("/api/auth/register", values)
+                .then((response) => {
+                    if(response.status === 200) {
+                        router.push("/login");
+                    }
+                }).catch((error) => {
+                    console.log(error);
+                })
         },
     });
 
@@ -53,29 +59,29 @@ export default function Register() {
                                             <div className="col-sm-6 mb-3 mb-sm-0">
                                                 <input type="text" name="firstName" className="form-control form-control-user" id="exampleFirstName"
                                                     placeholder="First Name" onChange={handleChange} values={values.firstName} />
-                                                <span>{errors.firstName ? errors.firstName : null}</span>
+                                                <span className="text-danger">{errors.firstName ? errors.firstName : null}</span>
                                             </div>
                                             <div className="col-sm-6">
                                                 <input type="text" name="lastName" className="form-control form-control-user" id="exampleLastName"
                                                     placeholder="Last Name" onChange={handleChange} values={values.lastName} />
-                                                <span>{errors.lastName ? errors.lastName : null}</span>
+                                                <span className="text-danger">{errors.lastName ? errors.lastName : null}</span>
                                             </div>
                                         </div>
                                         <div className="form-group">
                                             <input type="email" name="email" className="form-control form-control-user" id="exampleInputEmail"
                                                 placeholder="Email Address" onChange={handleChange} values={values.email} />
-                                            <span>{errors.email ? errors.email : null}</span>
+                                            <span className="text-danger">{errors.email ? errors.email : null}</span>
                                         </div>
                                         <div className="form-group row">
                                             <div className="col-sm-6 mb-3 mb-sm-0">
                                                 <input type="password" name="password" className="form-control form-control-user"
                                                     id="exampleInputPassword" placeholder="Password" onChange={handleChange} values={values.password} />
-                                                <span>{errors.password ? errors.password : null}</span>
+                                                <span className="text-danger">{errors.password ? errors.password : null}</span>
                                             </div>
                                             <div className="col-sm-6">
                                                 <input type="password" name="passwordConfirmation" className="form-control form-control-user"
                                                     id="exampleRepeatPassword" placeholder="Repeat Password" onChange={handleChange} values={values.passwordConfirmation} />
-                                                <span>{errors.passwordConfirmation ? errors.passwordConfirmation : null}</span>
+                                                <span className="text-danger">{errors.passwordConfirmation ? errors.passwordConfirmation : null}</span>
                                             </div>
                                         </div>
                                         <button className="btn btn-primary btn-user btn-block" type="submit">
