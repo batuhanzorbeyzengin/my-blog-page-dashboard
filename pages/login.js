@@ -3,6 +3,8 @@ import Link from "next/link";
 import axios from "axios"
 import { useState } from "react"
 import { useRouter } from "next/router";
+import { useContext } from "react";
+import AppContext from "../components/AppContext";
 
 
 export default function Login() {
@@ -10,6 +12,7 @@ export default function Login() {
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState();
+    const context = useContext(AppContext);
 
     const router = useRouter();
 
@@ -23,7 +26,8 @@ export default function Login() {
             .then((response) => {
                 if (response.status === 200) {
                     setLoading(false);
-                    document.cookie = `user=${JSON.stringify(response.data[0])}`;
+                    // document.cookie = `user=${JSON.stringify(response.data[0])}`;
+                    context.setUserDetail(response.data[0]);
                     router.push("/dashboard/home");
                 }
             })

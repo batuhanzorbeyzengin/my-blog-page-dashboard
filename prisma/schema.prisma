@@ -57,6 +57,7 @@ model Category {
   author     User       @relation(fields: [authorId], references: [id])
   authorId   Int
   posts Post[]
+  postCount   Int         @default(0)
 }
 
 enum Role {

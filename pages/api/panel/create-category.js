@@ -1,13 +1,11 @@
 import { PrismaClient } from '@prisma/client'
-import cookie from "cookie";
 
 const prisma = new PrismaClient()
 
 
 export default async function handler(req, res) {
-  const { categoryTitle, categoryUrl, categoryDescription } = req.body;
-  const cookies = cookie.parse(req.headers.cookie || '');
-  const user = cookies.user ? JSON.parse(cookies.user) : null;
+  const { userId, categoryTitle, categoryUrl, categoryDescription } = req.body;
+
   try {
     if (req.body && req.method == 'POST') {
       const newCategory = await prisma.category.create({
@@ -17,7 +15,7 @@ export default async function handler(req, res) {
           description: categoryDescription,
           author: {
             connect: {
-              id: user.id
+              id: userId
             },
           },
         },
