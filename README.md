@@ -40,3 +40,18 @@ npm run dev
 yarn dev
 ```
 You can start it this way.
+
+## What I want to do in the panel
+
+- Post creation, editing and deletion page.
+- A separate section for SEO settings in the post detail.
+- Category creation, editing and deletion page.
+- When I delete the category, scrolling or deleting the existing articles on it to other categories.
+- Making category-based SEO adjustments.
+- A common media file.
+- API key generation page for developers
+- Preparation of password reset service
+- You can get user records and authorize users in different roles on your panel, or you can use the registery api from outside and create role-based records for your website.
+- Adding and removing ROLs on the panel, making the user tracking part
+
+and many more, I am trying to complete these items for now. If you want, you can support the repo. You can develop new features.
