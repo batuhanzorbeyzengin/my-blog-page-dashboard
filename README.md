@@ -4,6 +4,8 @@ Technologies used in the project:
 
 - [Nextjs](https://nextjs.org/)
 - [Prisma](https://www.prisma.io/)
+- [Mysql](https://www.mysql.com/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
 
 While creating the frontend with Nextjs, I was able to handle the backend processes with Prisma without writing a separate backend.
 
