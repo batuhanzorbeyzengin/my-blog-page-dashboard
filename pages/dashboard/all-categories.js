@@ -35,8 +35,8 @@ export default function PostCategories() {
                             <tr key={x.title}>
                                 <td>{x.title}</td>
                                 <td>{x.postCount}</td>
-                                <td>{x.createdAt}</td>
-                                <td>{x.updatedAt}</td>
+                                <td>{new Date(x.createdAt).toLocaleString()}</td>
+                                <td>{new Date(x.updatedAt).toLocaleString()}</td>
                                 <td>
                                     <a href={`/dashboard/category-detail/${x.id}`}><button type="button" className="btn btn-primary">edit</button></a>
                                     {/* TODO: Delete service will be written and connected */}
