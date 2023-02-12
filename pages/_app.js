@@ -2,16 +2,14 @@ import 'bootstrap/dist/css/bootstrap.css'
 import '../styles/globals.css'
 import '../styles/sb-admin-2.min.css'
 import '../styles/fontawesome-free/css/all.min.css'
-import { useState, createContext } from 'react'
-import AppContext from '../components/AppContext'
+import { Provider } from 'react-redux'
+import store from '../stores'
 
 export default function App({ Component, pageProps }) {
 
-  const [userDetail, setUserDetail] = useState({})
-
   return (
-    <AppContext.Provider value={{ userDetail, setUserDetail }}>
+    <Provider store={store}>
       <Component {...pageProps} />
-    </AppContext.Provider>
+    </Provider>
   )
 }

@@ -1,20 +1,19 @@
 import Layout from "../../components/Layout"
 import Tables from "../../components/Tables"
 // import CategoryData from "../../styles/categories.json"
-import { useEffect, useContext, useState } from "react"
+import { useEffect, useState } from "react"
 import axios from "axios"
-import AppContext from "../../components/AppContext"
+import { useSelector } from "react-redux";
 
 const headContent = ["Categori Name", "Affiliated articles", "Release date", "Date of arrangement", ""]
 
 export default function PostCategories() {
 
-    const context = useContext(AppContext);
-
     const [CategoryData, setCategoryData] = useState([]);
+    const { userData } = useSelector(state => state.User);
 
     useEffect(() => {
-        axios.post("/api/panel/all-category", {userId: context.userDetail.id})
+        axios.post("/api/panel/all-category", {userId: userData.id})
             .then((response) => {
                 setCategoryData(response.data);
             })

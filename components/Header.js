@@ -1,15 +1,19 @@
 import Link from "next/link"
 import { useRouter } from "next/router"
 import axios from "axios"
+import { useDispatch } from "react-redux";
+import { deleteUser } from "../stores/user";
 
 export default function Header() {
 
     const router = useRouter();
+    const dispatch = useDispatch();
 
     const handleLogOut = async () => {
         const user = await axios.get("/api/auth/logout");
 
         if (user.status === 200) {
+            dispatch(deleteUser());
             router.push("/login");
         }
     };

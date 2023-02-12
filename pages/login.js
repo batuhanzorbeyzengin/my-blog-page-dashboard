@@ -3,16 +3,15 @@ import Link from "next/link";
 import axios from "axios"
 import { useState } from "react"
 import { useRouter } from "next/router";
-import { useContext } from "react";
-import AppContext from "../components/AppContext";
-
+import { useDispatch } from "react-redux";
+import { addUser } from "../stores/user";
 
 export default function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState();
-    const context = useContext(AppContext);
+    const dispatch = useDispatch();
 
     const router = useRouter();
 
@@ -26,14 +25,14 @@ export default function Login() {
             .then((response) => {
                 if (response.status === 200) {
                     setLoading(false);
-                    // document.cookie = `user=${JSON.stringify(response.data[0])}`;
-                    context.setUserDetail(response.data[0]);
+                    dispatch(addUser(response.data[0]));
                     router.push("/dashboard/home");
                 }
             })
             .catch((error) => {
                 setLoading(false);
-                setError(error.response.data.message);
+                setError(error.response);
+                console.log(error);
             })
     };
 

@@ -1,9 +1,8 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from "axios"
-import { useContext } from 'react';
-import AppContext from './AppContext';
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
 
 const validationSchema = Yup.object({
     categoryTitle: Yup.string().required("Required field"),
@@ -14,7 +13,9 @@ const validationSchema = Yup.object({
 export default function CategoryForm({ formType }) {
 
     const router = useRouter();
-    const context = useContext(AppContext);
+    const { userData } = useSelector(state => state.User);
+
+    console.log(userData);
 
     const { handleSubmit, handleChange, values, errors } = useFormik({
         initialValues: {
@@ -26,7 +27,7 @@ export default function CategoryForm({ formType }) {
         onSubmit: async (values, actions) => {
             const newValues = {
                 ...values,
-                userId: context.userDetail.id,
+                userId: userData[0].id,
                 categoryUrl: '/' + values.categoryUrl.toLowerCase().replace(/\s+/g, ' ').replace(/[\s-]+/g, '-').replace(/\b[A-Z]+\b/g, (word) => word.toLowerCase()),
             };
             // Form type control
