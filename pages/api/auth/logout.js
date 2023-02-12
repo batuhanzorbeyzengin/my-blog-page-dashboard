@@ -5,7 +5,6 @@ export default async function (req, res) {
   const { cookies } = req;
 
   const jwt = cookies.OursiteJWT;
-  const user = cookies.user;
 
   if (!jwt) {
     return res.json({ message: "Not logged in..." });
@@ -18,15 +17,7 @@ export default async function (req, res) {
       path: "/",
     });
 
-    const userSerialized = serialize("user", null, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV,
-      sameSite: "strict",
-      maxAge: -1,
-      path: "/",
-    });
-
-    res.setHeader("Set-Cookie", [serialised, userSerialized]);
+    res.setHeader("Set-Cookie", [serialised]);
 
     res.status(200).json({ message: "Successfuly logged out!" });
   }
