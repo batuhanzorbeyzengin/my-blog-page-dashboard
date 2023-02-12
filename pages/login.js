@@ -31,7 +31,7 @@ export default function Login() {
             })
             .catch((error) => {
                 setLoading(false);
-                setError(error.response);
+                setError(error.response.data.message);
                 console.log(error);
             })
     };
