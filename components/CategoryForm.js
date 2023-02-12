@@ -3,6 +3,7 @@ import * as Yup from 'yup';
 import axios from "axios"
 import { useContext } from 'react';
 import AppContext from './AppContext';
+import { useRouter } from "next/router";
 
 const validationSchema = Yup.object({
     categoryTitle: Yup.string().required("Required field"),
@@ -12,6 +13,7 @@ const validationSchema = Yup.object({
 
 export default function CategoryForm({ formType }) {
 
+    const router = useRouter();
     const context = useContext(AppContext);
 
     const { handleSubmit, handleChange, values, errors } = useFormik({
@@ -31,8 +33,9 @@ export default function CategoryForm({ formType }) {
             if (formType === "CreateCategory") {
                 await axios.post("/api/panel/create-category", newValues)
                     .then((response) => {
+                        console.log(response);
                         if (response.status === 200) {
-                            router.push("/dashboard/post-categories");
+                            router.push("/dashboard/all-categories");
                         }
                     })
                     .catch((error) => {

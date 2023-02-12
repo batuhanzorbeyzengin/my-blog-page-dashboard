@@ -3,7 +3,6 @@ import { sign } from "../../../services/jwt_sign_verify";
 import { serialize } from "cookie";
 import { PrismaClient } from '@prisma/client'
 import bcrypt from 'bcrypt'
-import { useState } from "react";
 
 const prisma = new PrismaClient()
 
