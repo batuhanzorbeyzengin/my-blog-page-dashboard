@@ -41,8 +41,9 @@ model Post {
   title      String @unique
   url        String @unique
   detail     String
-  seoTitle   String
-  seoDescription String
+  seoTitle   String?
+  seoDescription String?
+  seoKeyWord String?
   published  Boolean    @default(false)
   author     User       @relation(fields: [authorId], references: [id])
   authorId   Int
@@ -59,6 +60,7 @@ model Category {
   description String
   seoTitle   String?
   seoDescription String?
+  seoKeyWord String?
   author     User       @relation(fields: [authorId], references: [id])
   authorId   Int
   posts Post[]
