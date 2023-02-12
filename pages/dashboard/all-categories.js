@@ -16,7 +16,6 @@ export default function PostCategories() {
     useEffect(() => {
         axios.post("/api/panel/all-category", {userId: context.userDetail.id})
             .then((response) => {
-                console.log(response);
                 setCategoryData(response.data);
             })
             .catch((error) => {

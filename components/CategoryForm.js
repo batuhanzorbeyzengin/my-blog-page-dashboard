@@ -38,7 +38,6 @@ export default function CategoryForm({ formType }) {
                     .catch((error) => {
                         console.log(error);
                     })
-                console.log(newValues);
             } if (formType === "CategoryUpdate") {
                 console.log("Category Update");
             }

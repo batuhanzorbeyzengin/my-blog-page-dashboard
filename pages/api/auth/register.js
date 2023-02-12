@@ -14,7 +14,15 @@ export default async function handler(req, res) {
                     email: email,
                     firstName: firstName,
                     lastName: lastName,
-                    password: hashedPassword
+                    password: hashedPassword,
+                    profile: {
+                        create: {
+                            email: email,
+                            firstName: firstName,
+                            lastName: lastName,
+                            bio: 'test'
+                        }
+                    }
                 },
             })
             res.status(200).json(user);
