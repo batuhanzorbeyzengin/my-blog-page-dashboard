@@ -1,8 +1,9 @@
+import { useSelector } from "react-redux";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from "axios"
 import { useRouter } from "next/router";
-import { useSelector } from "react-redux";
+
 
 const validationSchema = Yup.object({
     categoryTitle: Yup.string().required("Required field"),
@@ -11,11 +12,10 @@ const validationSchema = Yup.object({
 });
 
 export default function CategoryForm({ formType }) {
-
     const router = useRouter();
+
     const { userData } = useSelector(state => state.User);
 
-    console.log(userData);
 
     const { handleSubmit, handleChange, values, errors } = useFormik({
         initialValues: {
@@ -27,14 +27,13 @@ export default function CategoryForm({ formType }) {
         onSubmit: async (values, actions) => {
             const newValues = {
                 ...values,
-                userId: userData[0].id,
+                userId: userData.userId,
                 categoryUrl: '/' + values.categoryUrl.toLowerCase().replace(/\s+/g, ' ').replace(/[\s-]+/g, '-').replace(/\b[A-Z]+\b/g, (word) => word.toLowerCase()),
             };
             // Form type control
             if (formType === "CreateCategory") {
                 await axios.post("/api/panel/create-category", newValues)
                     .then((response) => {
-                        console.log(response);
                         if (response.status === 200) {
                             router.push("/dashboard/all-categories");
                         }

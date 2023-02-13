@@ -13,7 +13,7 @@ export default function PostCategories() {
     const { userData } = useSelector(state => state.User);
 
     useEffect(() => {
-        axios.post("/api/panel/all-category", {userId: userData.id})
+        axios.post("/api/panel/all-category", {userId: userData.userId})
             .then((response) => {
                 setCategoryData(response.data);
             })

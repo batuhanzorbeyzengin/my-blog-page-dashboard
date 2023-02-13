@@ -38,8 +38,14 @@ export default async function (req, res, next) {
     });
   
     res.setHeader("Set-Cookie", serialised);
+
+    const userProfile = await prisma.profile.findMany({
+      where: {
+        email: username
+      },
+    });
   
-    res.status(200).json(userData);
+    res.status(200).json(userProfile);
   } catch (error) {
     res.status(401).json({ message: "Invalid account!" });
   }

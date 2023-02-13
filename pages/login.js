@@ -3,7 +3,7 @@ import Link from "next/link";
 import axios from "axios"
 import { useState } from "react"
 import { useRouter } from "next/router";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../stores/user";
 
 export default function Login() {
@@ -14,6 +14,8 @@ export default function Login() {
     const dispatch = useDispatch();
 
     const router = useRouter();
+
+    const {userData} = useSelector(state => state.User);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -35,7 +37,6 @@ export default function Login() {
                 console.log(error);
             })
     };
-
     return (
         <>
             <Head>

@@ -1,16 +1,23 @@
+/* eslint-disable react/no-unescaped-entities */
 import Head from "next/head";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteUser } from "../stores/user";
 
 export default function Layout({ children, title, description }) {
 
     const router = useRouter();
+    const dispatch = useDispatch();
+
+    const { userData } = useSelector(state => state.User);
 
     const handleLogOut = async () => {
         const user = await axios.get("/api/auth/logout");
 
         if (user.status === 200) {
+            dispatch(deleteUser());
             router.push("/login");
         }
     };
@@ -149,7 +156,7 @@ export default function Layout({ children, title, description }) {
 
                                 {/* <!-- Nav Item - User Information --> */}
                                 <li className="nav-item dropdown no-arrow d-flex align-items-center">
-                                    <span className="mr-2 d-none d-lg-inline text-gray-600 small">Batuhan Zorbey Zengin</span>
+                                    <span className="mr-2 d-none d-lg-inline text-gray-600 small">{userData?.firstName} {userData?.lastName}</span>
                                 </li>
 
                             </ul>
